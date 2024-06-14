@@ -1,0 +1,10 @@
+/* KAUÃ ROBERTO SILVA */
+#preview {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .preview-item {
+    margin: 10px;
+  }
+  

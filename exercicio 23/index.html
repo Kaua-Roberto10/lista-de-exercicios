@@ -1,0 +1,110 @@
+<!-- KAUÃ ROBERTO SILVA -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Previsão do Tempo</title>
+</head>
+
+<body>
+    <h2>Previsão do Tempo</h2>
+
+    <div class="container-fluids">
+        <div class="cards text-center">
+            <div class="cards-body">
+                <div class="city">Cidade Exemplo, BR</div>
+                <div class="container-img">
+                    <img src="https://static.vecteezy.com/ti/vetor-gratis/p3/15213175-de-contorno-do-icone-do-tempo-de-tempestade-cidade-da-chuva-vetor.jpg">
+                </div>
+                <div class="date">-</div>
+                <div class="container-temp mx-4 my-3">
+                    <div>-</div>
+                    <span>°C</span>
+                    <div class="low-high">- / -</div>
+                </div>
+                <div class="weather py-2">-</div>
+            </div>
+            <div class="cards-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Digite o nome da cidade"
+                        aria-label="Recipient's username" aria-describedby="button-addon2" id="cityInput">
+                    <button class="btn" type="button" id="button-addon2">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const api = {
+            key: "64ed82577ced7f69cb1687f0ce536131",
+            base: "https://api.openweathermap.org/data/2.5/",
+            lang: "pt_br",
+            units: "metric"
+        };
+
+        const cityInput = document.getElementById('cityInput');
+        const button = document.getElementById('button-addon2');
+        const city = document.querySelector('.city');
+        const date = document.querySelector('.date');
+        const container_img = document.querySelector('.container-img img');
+        const container_temp = document.querySelector('.container-temp div');
+        const temp_unit = document.querySelector('.container-temp span');
+        const low_high = document.querySelector('.low-high');
+        const weather_t = document.querySelector('.weather');
+
+        button.addEventListener('click', () => {
+            getWeatherData(cityInput.value);
+        });
+
+        cityInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                getWeatherData(cityInput.value);
+            }
+        });
+
+        function getWeatherData(cityName) {
+            fetch(`${api.base}weather?q=${cityName}&lang=${api.lang}&units=${api.units}&APPID=${api.key}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayWeatherData(data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados:', error);
+                    alert('Erro ao buscar dados. Por favor, tente novamente.');
+                });
+        }
+
+        function displayWeatherData(data) {
+            city.textContent = `${data.name}, ${data.sys.country}`;
+            date.textContent = formatDate(new Date());
+            container_temp.textContent = Math.round(data.main.temp);
+            temp_unit.textContent = '°C';
+            low_high.textContent = `${Math.round(data.main.temp_min)}°C / ${Math.round(data.main.temp_max)}°C`;
+            weather_t.textContent = capitalizeFirstLetter(data.weather[0].description);
+        }
+
+        function formatDate(date) {
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            return date.toLocaleDateString('pt-BR', options);
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    </script>
+</body>
+
+</html>

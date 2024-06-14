@@ -1,0 +1,16 @@
+/* KAUÃ ROBERTO SILVA */
+.faq-item {
+    margin-bottom: 20px;
+  }
+  
+  .question {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .answer {
+    display: none;
+    color: #666;
+  }
+  

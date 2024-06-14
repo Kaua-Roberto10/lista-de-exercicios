@@ -1,0 +1,68 @@
+<!-- KAUÃ ROBERTO SILVA -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens com Filtro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="filter-buttons">
+        <button onclick="filterGallery('all')">Todos</button>
+        <button onclick="filterGallery('nature')">Natureza</button>
+        <button onclick="filterGallery('city')">Cidade</button>
+        <button onclick="filterGallery('animals')">Animais</button>
+    </div>
+    <div class="gallery">
+        <div class="gallery-item nature">
+            <img src="https://static8.depositphotos.com/1529496/993/i/450/depositphotos_9939856-stock-photo-erawan-waterfall-kanchanaburi-thailand.jpg" alt="Natureza 1">
+        </div>
+        <div class="gallery-item city">
+            <img src="https://st4.depositphotos.com/24272902/25326/i/450/depositphotos_253263316-stock-photo-botanical-garden-curitiba-brazil.jpg" alt="Cidade 1">
+        </div>
+        <div class="gallery-item animals">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9N-Ik3oyeABBkD4JJX866iWxmRu_5EuSWNA&s" alt="Animais 1">
+        </div>
+        <div class="gallery-item nature">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk9YZvW9fN1C6pcFn5n0rhZVqKbO-OgbyI-g&s" alt="Natureza 2">
+        </div>
+        <div class="gallery-item city">
+            <img src="https://classic.exame.com/wp-content/uploads/2016/09/size_960_16_9_cristo-redentor-rio-de-janeiro18.jpg?quality=70&strip=info&w=960" alt="Cidade 2">
+        </div>
+        <div class="gallery-item animals">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-sZ0idD1Ti6MxQILHTdPWnJeYMf-tdSskFg&s" alt="Animais 2">
+        </div>
+        <div class="gallery-item nature">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBzd7Z7O1Hn30GHS7D3s4RYCDtuzF_8BHXnQ&s" alt="Natureza 3">
+        </div>
+        <div class="gallery-item city">
+            <img src="https://static.mundoeducacao.uol.com.br/mundoeducacao/2023/05/vista-aerea-de-viadutos-da-cidade-de-sao-paulo-capital-de-uma-regiao-metropolitana-do-brasil.jpg" alt="Cidade 3">
+        </div>
+        <div class="gallery-item animals">
+            <img src="https://www.petz.com.br/blog/wp-content/uploads/2022/06/animais-selvagens-3.jpg" alt="Animais 3">
+        </div>
+    </div>
+    <script>
+        function filterGallery(category) {
+            let items = document.querySelectorAll('.gallery-item');
+            if (category === 'all') {
+                items.forEach(item => {
+                    item.classList.add('show');
+                });
+            } else {
+                items.forEach(item => {
+                    if (item.classList.contains(category)) {
+                        item.classList.add('show');
+                    } else {
+                        item.classList.remove('show');
+                    }
+                });
+            }
+        }
+
+        // Mostrar todos os itens por padrão
+        filterGallery('all');
+    </script>
+</body>
+</html>

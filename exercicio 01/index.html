@@ -1,0 +1,63 @@
+<!-- KAUÃ ROBERTO SILVA -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página de Boas-vindas</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #welcome {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  #welcome:hover {
+    color: #FF5733;
+  }
+  #welcome::first-letter {
+    font-size: 36px;
+  }
+  #btn-welcome {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #btn-welcome:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+  <div id="container">
+    <h1>Bem-vindo à Página de Boas-vindas</h1>
+    <p id="welcome">Olá, bem-vindo ao nosso site! Esperamos que você goste da sua visita.</p>
+    <button id="btn-welcome" onclick="mostrarAlerta()">Clique aqui</button>
+  </div>
+
+  <script>
+    function mostrarAlerta() {
+      alert("Bem-vindo!");
+    }
+  </script>
+</body>
+</html>
